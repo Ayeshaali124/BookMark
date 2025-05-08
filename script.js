@@ -5,6 +5,11 @@ const bookmarkList=document.getElementById("bookmark-list")
 
 let bookmarks=JSON.parse(localStorage.getItem("bookmarks")) || []
 
+if (!Array.isArray(bookmarks)) {
+  bookmarks = [];
+}
+
+
 function displayBookmarks(){
 bookmarkList.innerHTML=""
 
