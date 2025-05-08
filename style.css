@@ -1,0 +1,71 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    }
+  
+  .container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  max-width: 30vw;
+  margin: auto;
+  background-color: rgba(207, 203, 203, 0.304);
+  justify-content: center;
+  margin-top: 50px;
+  border-radius: 10px;
+  padding: 50px;
+  }
+  
+  input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  margin: auto;
+  }
+  
+  #add-bookmark-button {
+  width: 150px;
+  padding: 10px 30px;
+  border-radius: 10px;
+  background-color: rgb(18, 151, 18);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  margin: auto;
+  }
+  #add-bookmark-button\:hover {
+  background-color: rgb(18, 88, 18);
+  }
+  
+  li {
+  list-style-type: none;
+  color: aliceblue;
+  }
+  
+  a {
+  text-decoration: none;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.352);
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: all 0.5s ease-in ;
+  }
+  
+  a:hover{
+  border: 2px solid black;
+  }
+  
+  #remove-bookmark-button {
+  background-color: rgba(255, 0, 0, 0.842);
+  padding: 10px 20px;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: all 0.5s ease-in ;
+  }
+  #remove-bookmark-button\:hover {
+  background-color: rgba(255, 0, 0, 0.999);
+  }
+  
