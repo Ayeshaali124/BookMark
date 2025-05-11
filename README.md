@@ -20,4 +20,5 @@ A simple, browser-based Bookmark Manager built using HTML, CSS, and JavaScript. 
 
 ![App Screenshot](Screenshot.png)
 
-
+##Deployement
+https://ayeshasbookmarkmanager.netlify.app/
