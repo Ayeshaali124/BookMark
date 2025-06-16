@@ -6,12 +6,11 @@ A simple, browser-based Bookmark Manager built using HTML, CSS, and JavaScript. 
 
 This marks my second repo
 - I created this using HTML, CSS AND JAVASCRIPT.
-- All the code is completely and rawly written by me.
 - The learning from this project is about the working of localStorage in javaScript.
-- Suggestion and contributions are most welcomed.
+- Suggestion and contributions are most welcome.
 - A small step towards building hopefully a good big project in the future.
 
-# Deployement
+# Deployment
 
 https://ayeshasbookmarkmanager.netlify.app/
 
