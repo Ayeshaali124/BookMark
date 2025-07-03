@@ -1,25 +1,107 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>Bookmark Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BookMark Manager</title>
-    <link rel="stylesheet" href="style.css" />
+
+    <link rel="stylesheet" href="./src/output.css">
   </head>
-  <body>
-    <div class="container">
-      <h1>BookMark Manager</h1>
-      <input type="text" id="bookmark-name" placeholder="Enter BookMark name" required />
-      <input type="url" id="bookmark-url" placeholder="Enter BookMark URL" required />
-      <button id="add-bookmark-button">Add BookMark</button>
-  <h2>Your BookMarks:</h2>
-  <ul id="bookmark-list">
-    
-  </ul>
-</div>
+  <body class="font-sans bg-gray-100 min-h-screen">
+    <div
+      class="flex flex-col items-center gap-5 text-center max-w-md mx-auto bg-gray-200/30 mt-12 rounded-xl p-12 shadow-lg"
+    >
+      <h1 class="text-3xl font-bold text-black">Bookmark Manager</h1>
 
-<script src="script.js"></script>
+      <input
+        type="text"
+        id="bookmark-name"
+        placeholder="Enter Bookmark Name"
+        required
+        class="w-4/5 p-2 rounded-lg border border-gray-300"
+      />
+      <input
+        type="url"
+        id="bookmark-url"
+        placeholder="Enter Bookmark URL"
+        required
+        class="w-4/5 p-2 rounded-lg border border-gray-300"
+      />
 
+      <button
+        id="add-bookmark-button"
+        class="w-[150px] px-6 py-2 rounded-lg bg-green-600 text-white hover:bg-green-800 transition-all"
+      >
+        Add Bookmark
+      </button>
+
+      <h2 class="text-xl font-semibold text-black mt-6">Your Bookmarks:</h2>
+      <ul id="bookmark-list" class="space-y-4 w-full mt-2"></ul>
+    </div>
+
+    <script>
+      const bookmarkName = document.getElementById("bookmark-name");
+      const bookmarkUrl = document.getElementById("bookmark-url");
+      const addBookmark = document.getElementById("add-bookmark-button");
+      const bookmarkList = document.getElementById("bookmark-list");
+
+      let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+
+      function displayBookmarks() {
+        bookmarkList.innerHTML = "";
+
+        bookmarks.forEach((bookmark, index) => {
+          const li = document.createElement("li");
+          li.className = "bg-white rounded-lg shadow p-4";
+
+          const wrapper = document.createElement("div");
+          wrapper.className = "flex justify-between items-center";
+
+          const link = document.createElement("a");
+          link.href = bookmark.url;
+          link.target = "_blank";
+          link.textContent = bookmark.name;
+          link.className =
+            "text-black border border-transparent px-4 py-2 rounded-lg hover:border-black transition-all";
+
+          const removeBtn = document.createElement("button");
+          removeBtn.textContent = "Remove";
+          removeBtn.onclick = () => removeBookmark(index);
+          removeBtn.className =
+            "bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-800 transition-all";
+
+          wrapper.appendChild(link);
+          wrapper.appendChild(removeBtn);
+          li.appendChild(wrapper);
+          bookmarkList.appendChild(li);
+        });
+      }
+
+      addBookmark.addEventListener("click", () => {
+        const name = bookmarkName.value.trim();
+        const url = bookmarkUrl.value.trim();
+
+        if (name && url) {
+          const newBookmark = { name, url };
+          bookmarks.push(newBookmark);
+          localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+
+          bookmarkName.value = "";
+          bookmarkUrl.value = "";
+
+          displayBookmarks();
+        } else {
+          alert("Please enter both name and valid URL");
+        }
+      });
+
+      function removeBookmark(index) {
+        bookmarks.splice(index, 1);
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+        displayBookmarks();
+      }
+
+      displayBookmarks();
+    </script>
   </body>
 </html>
